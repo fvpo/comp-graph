@@ -1,4 +1,24 @@
-[gd_scene load_steps=747 format=4 uid="uid://80ms27v6bpvx"]
+[gd_scene load_steps=755 format=4 uid="uid://80ms27v6bpvx"]
+
+[ext_resource type="Script" uid="uid://c2eub5htp1j87" path="res://Models/movimentacao.gd" id="1_wxp7x"]
+[ext_resource type="Script" uid="uid://mcvt6xpd2ekd" path="res://Models/node_3d.gd" id="2_f4uk5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f4uk5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_50lak"]
+noise = SubResource("FastNoiseLite_f4uk5")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f4uk5"]
+sky_top_color = Color(0.039215688, 0.4745098, 0.7254902, 1)
+sky_horizon_color = Color(0.45882353, 0.68235296, 0.85882354, 1)
+sky_cover = SubResource("NoiseTexture2D_50lak")
+
+[sub_resource type="Sky" id="Sky_50lak"]
+sky_material = SubResource("ProceduralSkyMaterial_f4uk5")
+
+[sub_resource type="Environment" id="Environment_hc510"]
+background_mode = 2
+sky = SubResource("Sky_50lak")
 
 [sub_resource type="Animation" id="Animation_5t0gh"]
 resource_name = "backwallAction"
@@ -11545,7 +11565,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_drh7u")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_50lak"]
+
 [node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hc510")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -11570,7 +11595,7 @@ mesh = SubResource("ArrayMesh_h277c")
 skeleton = NodePath("")
 
 [node name="roof" type="MeshInstance3D" parent="church"]
-transform = Transform3D(1.965623, 0, 0, 0, 1, 0, 0, 0, 2.0735865, -20.768076, 11.280897, -3.2821758)
+transform = Transform3D(1.965623, 0, 0, 0, 1, 0, 0, 0, 2.0735865, -20.768, 11.281, -3.282)
 mesh = SubResource("ArrayMesh_reqby")
 skeleton = NodePath("")
 
@@ -11676,11 +11701,13 @@ skeleton = NodePath("")
 
 [node name="frontdoor left" type="MeshInstance3D" parent="church"]
 transform = Transform3D(1.9595232, 0, 0, 0, 1.2944866, 0, 0, 0, 3.280449, 0.060471803, -1.1915932, -8.147181)
+visible = false
 mesh = SubResource("ArrayMesh_6hddw")
 skeleton = NodePath("")
 
 [node name="frontdoor right" type="MeshInstance3D" parent="church"]
 transform = Transform3D(1.9595214, 0, -0.0042520897, 0, 1.2891954, 0, -0.0025112524, 0, -3.3178904, 0.06860219, -1.2472681, -1.1248308)
+visible = false
 mesh = SubResource("ArrayMesh_w1p7n")
 skeleton = NodePath("")
 
@@ -13338,3 +13365,46 @@ spot_range = 20.0
 spot_attenuation = 0.5
 spot_angle = 32.26
 spot_angle_attenuation = 0.49999943
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="illumination"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3061142, 42.21402, -5.2779236)
+visible = false
+light_energy = 1.25
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_normal_bias = 0.8
+
+[node name="Movimentacao" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8031845, 0, -3.654873)
+script = ExtResource("1_wxp7x")
+
+[node name="Camera1" type="Camera3D" parent="Movimentacao"]
+transform = Transform3D(0.05015713, 0, 0.9987413, 0, 1, 0, -0.9987413, 0, 0.05015713, 24.610746, 0.44732618, 1.6581504)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movimentacao"]
+visible = false
+shape = SubResource("BoxShape3D_50lak")
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("2_f4uk5")
+
+[node name="frontdoor_left" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.9595232, 0, 0, 0, 1.2944866, 0, 0, 0, 3.280449, 0.060471803, -1.1915932, -8.147181)
+mesh = SubResource("ArrayMesh_6hddw")
+skeleton = NodePath("")
+
+[node name="frontdoor_right" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.9595214, 0, -0.0042520897, 0, 1.2891954, 0, -0.0025112524, 0, -3.3178904, 0.06860219, -1.2472681, -1.1248308)
+mesh = SubResource("ArrayMesh_w1p7n")
+skeleton = NodePath("")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.028841287, 0, -14.9106245, 0, 1.8377978, 0, 3.3048742, 0, 0.13012344, -24.857557, -3.774437, -3.768)
+visible = false
+mesh = SubResource("ArrayMesh_h277c")
+skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.98768836, 0.15643445, 0, -0.15643445, -0.98768836, 0, 0, 0)
+shadow_enabled = true
