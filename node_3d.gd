@@ -4,7 +4,7 @@ extends Node3D
 @onready var porta_dir = $frontdoor_right
 
 @export var angulo_aberto = 90.0   # grau que a porta abre
-@export var velocidade = 2.0       # velocidade de abertura/fechamento
+@export var velocidade = 5.0       # velocidade de abertura/fechamento
 
 var abrindo = false
 var fechado = true
