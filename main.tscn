@@ -1,4 +1,4 @@
-[gd_scene load_steps=755 format=4 uid="uid://80ms27v6bpvx"]
+[gd_scene load_steps=757 format=4 uid="uid://80ms27v6bpvx"]
 
 [ext_resource type="Script" uid="uid://c2eub5htp1j87" path="res://movimentacao.gd" id="1_wxp7x"]
 [ext_resource type="Script" uid="uid://mcvt6xpd2ekd" path="res://node_3d.gd" id="2_f4uk5"]
@@ -11567,6 +11567,12 @@ shadow_mesh = SubResource("ArrayMesh_drh7u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50lak"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(1, 3.4432373, 2.9455452)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(11.271545, 9.286865, 1)
+
 [node name="main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -11596,6 +11602,7 @@ skeleton = NodePath("")
 
 [node name="roof" type="MeshInstance3D" parent="church"]
 transform = Transform3D(1.965623, 0, 0, 0, 1, 0, 0, 0, 2.0735865, -20.768, 11.281, -3.282)
+visible = false
 mesh = SubResource("ArrayMesh_reqby")
 skeleton = NodePath("")
 
@@ -13410,3 +13417,64 @@ skeleton = NodePath("")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.98768836, 0.15643445, 0, -0.15643445, -0.98768836, 0, 0, 0)
 shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.585346)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-0.3, 0, 1.2064344e-06, 0, 3.81, 0, -2.6226834e-08, 0, -13.8, -39.91767, 4.654367, 2.0577025)
+shape = SubResource("BoxShape3D_0xm2m")
+debug_color = Color(1.3128003, 5.3697925, 5.0880766, 1)
+
+[node name="backwall" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.3, 0, -2.089652e-06, 0, 3.816393, 0, 4.5298744e-08, 0, -13.83914, -66.93179, 0.9744589, 20.19091)
+visible = false
+mesh = SubResource("ArrayMesh_eae8m")
+skeleton = NodePath("")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.585346)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(-1.3113417e-08, 0, 13.8, 0, 3.81, 0, -0.3, 0, -6.032172e-07, -19.94825, 4.654367, -10.320338)
+shape = SubResource("BoxShape3D_0xm2m")
+debug_color = Color(1.3128003, 5.3697925, 5.0880766, 1)
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.585346)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(-1.3113417e-08, 0, 13.8, 0, 3.81, 0, -0.3, 0, -6.032172e-07, -19.94825, 4.654367, 15.545613)
+shape = SubResource("BoxShape3D_0xm2m")
+debug_color = Color(1.3128003, 5.3697925, 5.0880766, 1)
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9568871, 1.9447322, 4.765402)
+shape = SubResource("BoxShape3D_h2yge")
+debug_color = Color(0.003923818, 0.00033786648, 0.002008936, 0.9607843)
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.598652)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9568871, 1.9447322, 4.8176174)
+shape = SubResource("BoxShape3D_h2yge")
+debug_color = Color(0.003923818, 0.00033786648, 0.002008936, 0.9607843)
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8728123, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9568871, 1.9447322, 4.765402)
+shape = SubResource("BoxShape3D_h2yge")
+debug_color = Color(0.003923818, 0.00033786648, 0.002008936, 0.9607843)
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8728123, 0, -18.598652)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9568871, 1.9447322, 4.8176174)
+shape = SubResource("BoxShape3D_h2yge")
+debug_color = Color(0.003923818, 0.00033786648, 0.002008936, 0.9607843)
