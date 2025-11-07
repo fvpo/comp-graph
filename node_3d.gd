@@ -24,7 +24,7 @@ func _process(delta):
 	if abrindo:
 		# abre portas
 		porta_esq.rotation_degrees.y = lerp(porta_esq.rotation_degrees.y, rot_esq_inicial.y + angulo_aberto, delta * velocidade)
-		porta_dir.rotation_degrees.y = lerp(porta_dir.rotation_degrees.y, rot_dir_inicial.y - angulo_aberto, delta * velocidade)
+		porta_dir.rotation_degrees.y = lerp( 	porta_dir.rotation_degrees.y, rot_dir_inicial.y - angulo_aberto, delta * velocidade)
 	else:
 		# fecha portas
 		porta_esq.rotation_degrees.y = lerp(porta_esq.rotation_degrees.y, rot_esq_inicial.y, delta * velocidade)
