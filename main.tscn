@@ -1,4 +1,4 @@
-[gd_scene load_steps=769 format=4 uid="uid://80ms27v6bpvx"]
+[gd_scene load_steps=770 format=4 uid="uid://80ms27v6bpvx"]
 
 [ext_resource type="Script" uid="uid://c2eub5htp1j87" path="res://movimentacao.gd" id="1_wxp7x"]
 [ext_resource type="Script" uid="uid://mcvt6xpd2ekd" path="res://node_3d.gd" id="2_f4uk5"]
@@ -19,6 +19,10 @@ sky_material = SubResource("ProceduralSkyMaterial_f4uk5")
 [sub_resource type="Environment" id="Environment_hc510"]
 background_mode = 2
 sky = SubResource("Sky_50lak")
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 
 [sub_resource type="Animation" id="Animation_5t0gh"]
 resource_name = "backwallAction"
@@ -194,6 +198,8 @@ backface_collision = true
 margin = 0.2
 data = PackedVector3Array(1, 2.6964998, -1, -1, 2.6964998, 1, -1, 2.6964998, -1, 1, 2.6964998, -1, 1, 2.6964998, 1, -1, 2.6964998, 1, 1, -1.0583999, 1, -1, 2.6964998, 1, 1, 2.6964998, 1, 1, -1.0583999, 1, -1, -1.0612999, 1, -1, 2.6964998, 1, -1, -1.0612999, 1, -1, 2.6964998, -1, -1, 2.6964998, 1, -1, -1.0612999, 1, -1, -1.0604, -1, -1, 2.6964998, -1, -1, -1.0604, -1, 1, -1.0583999, 1, 1, -1.0603, -1, -1, -1.0604, -1, -1, -1.0612999, 1, 1, -1.0583999, 1, 1, -1.0603, -1, 1, 2.6964998, 1, 1, 2.6964998, -1, 1, -1.0603, -1, 1, -1.0583999, 1, 1, 2.6964998, 1, -1, -1.0604, -1, 1, 2.6964998, -1, -1, 2.6964998, -1, -1, -1.0604, -1, 1, -1.0603, -1, 1, 2.6964998, -1)
 backface_collision = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1bvp3"]
 margin = 0.2
@@ -11740,6 +11746,7 @@ shape = SubResource("ConcavePolygonShape3D_5vw27")
 
 [node name="c_floor" type="MeshInstance3D" parent="church"]
 transform = Transform3D(1.9852467, 0, 0, 0, 2.0168495, 0, 0, 0, 2.0752633, -20.904188, -2.8838296, -3.2194366)
+material_override = SubResource("StandardMaterial3D_h2yge")
 mesh = SubResource("ArrayMesh_h277c")
 skeleton = NodePath("")
 
